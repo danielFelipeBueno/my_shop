@@ -29,7 +29,7 @@ class ShopProductCard extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(15),
-              child: Image.network(product.image),
+              child: Image.network(product.image, fit: BoxFit.cover),
             ),
             Positioned(
                 bottom: 0,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/ui/admin/cubit/admin_cubit.dart';
@@ -12,7 +10,6 @@ class AdminScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = List<String>.generate(10000, (i) => 'Item $i');
     return BlocBuilder<AdminCubit, AdminState>(
       builder: (context, state) {
         return Padding(
