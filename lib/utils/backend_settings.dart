@@ -5,3 +5,4 @@ const getMainProductsUrl = '$baseUrl/products/id/';
 const getMainAdsUrl = '$baseUrl/advertisements/id/';
 const getMainHomeUrl = '$baseUrl/products/home';
 const createProductUrl = '$baseUrl/products/create';
+const createAdUrl = '$baseUrl/advertisements/create';

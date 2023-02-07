@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/ui/admin/cubit/admin_cubit.dart';
 import 'package:my_shop/ui/home/widgets/custom_app_bar.dart';
+import 'package:my_shop/ui/new_ad/new_ad_screen.dart';
 import 'package:my_shop/ui/new_product/cubit/new_product_cubit.dart';
 import 'package:my_shop/ui/new_product/new_product_screen.dart';
 import 'package:my_shop/ui/shop/shop_screen.dart';
@@ -48,13 +49,17 @@ class HomeScreen extends StatelessWidget {
                             String title = '';
                             if (state.controller.page == 0) {
                               title = 'Crear producto';
-                            } else if (state.controller.page == 1) {
-                              title = 'Crear Anuncio';
-                            }
-                            Navigator.push(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => NewProductScreen(title: title,)));
+                            } else if (state.controller.page == 1) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const NewAdScreen()));
+                            }
+                            
                           },
                           child: const Icon(CupertinoIcons.add),
                         );

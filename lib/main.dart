@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/ui/admin/cubit/admin_cubit.dart';
 import 'package:my_shop/ui/home/cubit/home_cubit.dart';
 import 'package:my_shop/ui/home/home_screen.dart';
+import 'package:my_shop/ui/new_ad/cubit/new_ad_cubit.dart';
 import 'package:my_shop/ui/new_product/cubit/new_product_cubit.dart';
 import 'package:my_shop/ui/shopping_cart/cubit/shopping_cart_cubit.dart';
 import 'package:my_shop/utils/dependencies.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => HomeCubit(context.read())),
           BlocProvider(create: (context) => AdminCubit(context.read())),
           BlocProvider(create: (context) => NewProductCubit(context.read())),
-          BlocProvider(create: (context) => ShoppingCartCubit())
+          BlocProvider(create: (context) => ShoppingCartCubit()),
+          BlocProvider(create: (context) => NewAdCubit(context.read()))
         ],
         child: MaterialApp(
           builder: (context, child) {

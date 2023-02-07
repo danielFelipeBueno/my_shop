@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:my_shop/data/app_repository.dart';
 import 'package:http/http.dart' as http;
+import 'package:my_shop/domain/models/ad_models.dart';
 import 'dart:convert';
 import 'package:my_shop/domain/models/products_model.dart';
 import 'package:my_shop/utils/backend_settings.dart';
@@ -35,6 +36,14 @@ class AppImpl extends AppRepository {
   Future<http.Response> createProduct(Product product) async {
     final url = Uri.parse(createProductUrl);
     final body = jsonEncode(product.toJson());
+    final headers = {'Content-Type':'application/json'};
+    return await http.post(url, headers: headers,body: body);
+  }
+
+  @override
+  Future<http.Response> createAd(Ad ad) async {
+    final url = Uri.parse(createAdUrl);
+    final body = jsonEncode(ad.toJson());
     final headers = {'Content-Type':'application/json'};
     return await http.post(url, headers: headers,body: body);
   }

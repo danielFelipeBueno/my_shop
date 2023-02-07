@@ -65,4 +65,14 @@ class AppUseCase {
       return true;
     }
   }
+
+  Future<bool> createAd(Ad ad) async {
+    final newAd = await _appRepository.createAd(ad);
+    inspect(newAd);
+    if (newAd.statusCode != 201) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/domain/models/ad_models.dart';
+import 'package:my_shop/ui/new_ad/cubit/new_ad_cubit.dart';
 import 'package:my_shop/utils/constants.dart';
 
 class AdvertisementCard extends StatelessWidget {
-  const AdvertisementCard({Key? key, required this.ad}) : super(key: key);
+  AdvertisementCard({Key? key, required this.ad}) : super(key: key);
 
   final Ad ad;
+  
+  String image ='https://images.materilejuguetes.com/imagenes/productos/5@img5cad51fd69d85.jpg';
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +54,19 @@ class AdvertisementCard extends StatelessWidget {
             ),
           ),
           Container(
-            // color: Colors.red,
             width: 160,
+            height: 160,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: kSecondaryColor, width: 2),
+              borderRadius: const BorderRadius.all(Radius.circular(30))
+            ),
+            padding: EdgeInsets.all(8),
+            child: Image.network(ad.image,fit: BoxFit.contain)
+            // CircleAvatar(
+            //   backgroundImage: NetworkImage(ad.image),
+            //   radius: MediaQuery.of(context).size.width / 5
+            // )
           )
         ],
       ),

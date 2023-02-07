@@ -15,7 +15,11 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    String image = '';
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {
+        image = state.user == null ?'':state.user!.urlProfile;
+      },
       builder: (context, state) {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -56,7 +60,10 @@ class CustomAppBar extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          const CircleAvatar(radius: 50),
+                                          CircleAvatar(
+                                            backgroundImage: NetworkImage(image),
+                                            radius: 50
+                                          ),
                                           const Spacer(),
                                           Column(
                                             mainAxisAlignment:
@@ -110,7 +117,7 @@ class CustomAppBar extends StatelessWidget {
                               ),
                             ));
                       },
-                      child: const CircleAvatar()),
+                      child: CircleAvatar(backgroundImage: NetworkImage(image),)),
                   const Spacer(),
                   Text(
                       state.user != null
