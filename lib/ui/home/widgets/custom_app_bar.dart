@@ -90,22 +90,22 @@ class CustomAppBar extends StatelessWidget {
                                               Text(state.user != null
                                                   ? state.user!.email
                                                   : ''),
-                                              MaterialButton(
-                                                elevation: 0,
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const EditProfileScreen()));
-                                                },
-                                                color: kPrimaryColor,
-                                                child: const Text(
-                                                  'Editar',
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              )
+                                              // MaterialButton(
+                                              //   elevation: 0,
+                                              //   onPressed: () {
+                                              //     Navigator.push(
+                                              //         context,
+                                              //         MaterialPageRoute(
+                                              //             builder: (context) =>
+                                              //                 const EditProfileScreen()));
+                                              //   },
+                                              //   color: kPrimaryColor,
+                                              //   child: const Text(
+                                              //     'Editar',
+                                              //     style: TextStyle(
+                                              //         color: Colors.white),
+                                              //   ),
+                                              // )
                                             ],
                                           ),
                                           const SizedBox(width: 35),

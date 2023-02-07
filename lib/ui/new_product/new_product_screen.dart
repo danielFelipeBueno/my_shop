@@ -82,6 +82,7 @@ class NewProductScreen extends StatelessWidget {
                                 children: [
                                   Flexible(
                                       child: TextFormField(
+                                        keyboardType: TextInputType.number,
                                           controller: state.priceController,
                                           decoration: const InputDecoration(
                                               hintText: 'Precio'))),
