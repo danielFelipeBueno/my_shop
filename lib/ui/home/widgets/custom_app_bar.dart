@@ -22,81 +22,92 @@ class CustomAppBar extends StatelessWidget {
               child: Row(
                 children: [
                   InkWell(
-                    onTap: () {
-                      showTopModalSheet(
-                          context,
-                          Container(
-                            width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.3,
-                            color: Colors.white,
-                            child: SafeArea(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20),
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                        height: MediaQuery.of(context)
-                                                .size
-                                                .height *
-                                            0.03),
-                                    const Text(
-                                      'Mi Perfil',
-                                      style: TextStyle(
-                                          color: kSecondaryColor,
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const SizedBox(height: 20),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const CircleAvatar(radius: 50),
-                                        const Spacer(),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text( state.user != null ?state.user!.firstName+' '+state.user!.lastName:'Hola',
-                                              style: const TextStyle(
-                                                color: kSecondaryColor,
-                                                fontSize: 18,
-                                                fontWeight:FontWeight.bold)
-                                              ),
-                                            const SizedBox(height: 10),
-                                            Text(state.user  != null ?'${state.user!.age} años':''), 
-                                            const SizedBox(height: 5),
-                                            Text(state.user  != null ?state.user!.email:''), 
-                                            // MaterialButton(
-                                            //   elevation: 0,
-                                            //   onPressed: () {},
-                                            //   color: kPrimaryColor,
-                                            //   child: const Text(
-                                            //     'Editar',
-                                            //     style: TextStyle(
-                                            //         color: Colors.white),
-                                            //   ),
-                                            // )
-                                          ],
-                                        ),
-                                        const SizedBox(width: 35),
-                                      ],
-                                    )
-                                  ],
+                      onTap: () {
+                        showTopModalSheet(
+                            context,
+                            Container(
+                              width: double.infinity,
+                              height: MediaQuery.of(context).size.height * 0.33,
+                              color: Colors.white,
+                              child: SafeArea(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.03),
+                                      const Text(
+                                        'Mi Perfil',
+                                        style: TextStyle(
+                                            color: kSecondaryColor,
+                                            fontSize: 36,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(height: 20),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const CircleAvatar(radius: 50),
+                                          const Spacer(),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                  state.user != null
+                                                      ? state.user!.firstName +
+                                                          ' ' +
+                                                          state.user!.lastName
+                                                      : 'Hola',
+                                                  style: const TextStyle(
+                                                      color: kSecondaryColor,
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold)),
+                                              const SizedBox(height: 10),
+                                              Text(state.user != null
+                                                  ? '${state.user!.age} años'
+                                                  : ''),
+                                              const SizedBox(height: 5),
+                                              Text(state.user != null
+                                                  ? state.user!.email
+                                                  : ''),
+                                              // MaterialButton(
+                                              //   elevation: 0,
+                                              //   onPressed: () {},
+                                              //   color: kPrimaryColor,
+                                              //   child: const Text(
+                                              //     'Editar',
+                                              //     style: TextStyle(
+                                              //         color: Colors.white),
+                                              //   ),
+                                              // )
+                                            ],
+                                          ),
+                                          const SizedBox(width: 35),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ));
-                    },
-                    child: const CircleAvatar()
-                  ),
+                            ));
+                      },
+                      child: const CircleAvatar()),
                   const Spacer(),
-                  Text(state.user != null?'Hola ${state.user!.firstName}' :'Hola',
+                  Text(
+                      state.user != null
+                          ? 'Hola ${state.user!.firstName}'
+                          : 'Hola',
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                           fontSize: 36,
