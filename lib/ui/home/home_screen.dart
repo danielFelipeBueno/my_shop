@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/ui/admin/cubit/admin_cubit.dart';
 import 'package:my_shop/ui/home/widgets/custom_app_bar.dart';
+import 'package:my_shop/ui/new_product/cubit/new_product_cubit.dart';
 import 'package:my_shop/ui/new_product/new_product_screen.dart';
 import 'package:my_shop/ui/shop/shop_screen.dart';
 import 'package:my_shop/utils/constants.dart';
@@ -43,6 +44,7 @@ class HomeScreen extends StatelessWidget {
                           elevation: 0,
                           backgroundColor: const Color(0xff1A1A1A),
                           onPressed: () {
+                            context.read<NewProductCubit>().init();
                             String title = '';
                             if (state.controller.page == 0) {
                               title = 'Crear producto';
@@ -52,9 +54,7 @@ class HomeScreen extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => NewProductScreen(
-                                          title: title,
-                                        )));
+                                    builder: (context) => NewProductScreen(title: title,)));
                           },
                           child: const Icon(CupertinoIcons.add),
                         );

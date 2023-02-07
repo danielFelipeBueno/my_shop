@@ -4,3 +4,4 @@ const getUserByIdUrl = '$baseUrl/users/id/';
 const getMainProductsUrl = '$baseUrl/products/id/';
 const getMainAdsUrl = '$baseUrl/advertisements/id/';
 const getMainHomeUrl = '$baseUrl/products/home';
+const createProductUrl = '$baseUrl/products/create';
