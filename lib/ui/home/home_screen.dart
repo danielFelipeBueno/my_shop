@@ -30,23 +30,39 @@ class HomeScreen extends StatelessWidget {
             flexibleSpace: const CustomAppBar(),
           ),
           body: selectedPage(state.index),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: state.index == 1 ?SizedBox(
-            height: 70,
-            width: 70,
-            child: FittedBox(
-              child: FloatingActionButton(
-                elevation: 0,
-                backgroundColor: const Color(0xff1A1A1A),
-                onPressed: () {
-                  Navigator.push(context, 
-                    MaterialPageRoute(builder: (context) => const NewProductScreen())
-                  );
-                },
-                child: const Icon(CupertinoIcons.add),
-              ),
-            ),
-          ):Container(),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: state.index == 1
+              ? SizedBox(
+                  height: 70,
+                  width: 70,
+                  child: FittedBox(
+                    child: BlocBuilder<AdminCubit, AdminState>(
+                      builder: (context, state) {
+                        return FloatingActionButton(
+                          elevation: 0,
+                          backgroundColor: const Color(0xff1A1A1A),
+                          onPressed: () {
+                            String title = '';
+                            if (state.controller.page == 0) {
+                              title = 'Crear producto';
+                            } else if (state.controller.page == 1) {
+                              title = 'Crear Anuncio';
+                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NewProductScreen(
+                                          title: title,
+                                        )));
+                          },
+                          child: const Icon(CupertinoIcons.add),
+                        );
+                      },
+                    ),
+                  ),
+                )
+              : Container(),
           bottomNavigationBar: BottomNavigationBar(
             elevation: 0,
             currentIndex: state.index,
@@ -56,24 +72,20 @@ class HomeScreen extends StatelessWidget {
             unselectedFontSize: 12,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Icon(CupertinoIcons.heart_solid)
-                ),
-                label: 'Shop'
-              ),
+                  icon: Padding(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Icon(CupertinoIcons.heart_solid)),
+                  label: 'Shop'),
               BottomNavigationBarItem(
-                backgroundColor: Colors.red,
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Icon(Icons.work)
-                ),
-                label: 'Admin'
-              ),
+                  backgroundColor: Colors.red,
+                  icon: Padding(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Icon(Icons.work)),
+                  label: 'Admin'),
             ],
             selectedItemColor: kPrimaryColor,
             unselectedItemColor: kSecondaryColor,
-            onTap: (int index){
+            onTap: (int index) {
               context.read<HomeCubit>().setIndex(index);
             },
           ),
@@ -82,12 +94,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget selectedPage(int index){
-    if (index == 0){
+  Widget selectedPage(int index) {
+    if (index == 0) {
       return const ShopScreen();
-    }else if(index == 1){
+    } else if (index == 1) {
       return const AdminScreen();
-    }else{
+    } else {
       return Container();
     }
   }

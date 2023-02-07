@@ -26,6 +26,7 @@ class ProductScreen extends StatelessWidget {
             padding: const EdgeInsets.all(25),
             child: Center(
                 child: CircleAvatar(
+              backgroundImage: NetworkImage(product.image),
               radius: MediaQuery.of(context).size.width / 4,
             )),
           ),
@@ -54,22 +55,29 @@ class ProductScreen extends StatelessWidget {
                     MaterialButton(
                       color: kPrimaryColor,
                       onPressed: () {},
-                      child: const Text(
-                        '\$9.99',
-                        style: TextStyle(color: Colors.white),
+                      child: Text(
+                        '\$${product.price}',
+                        style: const TextStyle(color: Colors.white),
                       ),
                     )
                   ],
                 ),
-                const Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet blandit nunc, a blandit sem porttitor vel. Maecenas pellentesque sed.'),
+                const SizedBox(
+                  height: 20,
+                ),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      product.description,
+                      style: const TextStyle(fontSize: 15),
+                    )),
                 const SizedBox(
                   height: 30,
                 ),
                 Table(
-                  children: const [
+                  children: [
                     TableRow(children: [
-                      Padding(
+                      const Padding(
                         padding: edgeInsets,
                         child: Text('Marca',
                             style: TextStyle(
@@ -79,13 +87,13 @@ class ProductScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: edgeInsets,
-                        child: Text('Marca',
-                            style: TextStyle(
+                        child: Text(product.brand,
+                            style: const TextStyle(
                                 color: kSecondaryColor, fontSize: 16)),
                       )
                     ]),
                     TableRow(children: [
-                      Padding(
+                      const Padding(
                         padding: edgeInsets,
                         child: Text('Categoria',
                             style: TextStyle(
@@ -95,8 +103,8 @@ class ProductScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: edgeInsets,
-                        child: Text('Categoria',
-                            style: TextStyle(
+                        child: Text(product.category,
+                            style: const TextStyle(
                                 color: kSecondaryColor, fontSize: 16)),
                       )
                     ])
