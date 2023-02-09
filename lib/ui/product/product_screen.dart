@@ -7,9 +7,13 @@ import 'package:my_shop/ui/shopping_cart/shopping_cart_screen.dart';
 import 'package:my_shop/utils/constants.dart';
 
 class ProductScreen extends StatelessWidget {
-  const ProductScreen({Key? key, required this.product}) : super(key: key);
+  const ProductScreen({Key? key,
+    required this.product,
+    required this.isAdmin
+  }) : super(key: key);
 
   final Product product;
+  final bool isAdmin;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,19 @@ class ProductScreen extends StatelessWidget {
                       onPressed: () => Navigator.pop(context),
                       icon: const Icon(CupertinoIcons.back))),
               const Spacer(),
-              IconButton(
+              isAdmin ?Container()
+              :BlocBuilder<ShoppingCartCubit, ShoppingCartState>(
+                builder: (context, state) {
+                  return state.products.isNotEmpty 
+                  ?CircleAvatar(
+                    radius: 10,
+                    backgroundColor: kPrimaryColor,
+                    child: Text(state.products.length.toString()),
+                  ) :Container();
+                },
+              ),
+              isAdmin ?Container()
+              :IconButton(
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -131,7 +147,8 @@ class ProductScreen extends StatelessWidget {
             ),
           ),
           const Spacer(flex: 5),
-          Padding(
+          isAdmin ?Container()
+          :Padding(
             padding: const EdgeInsets.all(30),
             child: MaterialButton(
               height: 40,

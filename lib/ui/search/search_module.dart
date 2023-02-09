@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/domain/models/products_model.dart';
 import 'package:my_shop/ui/product/product_screen.dart';
 import 'package:my_shop/ui/search/cubit/search_cubit.dart';
+import 'package:my_shop/utils/constants.dart';
 
 class SearchModule extends StatelessWidget {
   const SearchModule({
@@ -25,16 +26,10 @@ class SearchModule extends StatelessWidget {
             margin: const EdgeInsets.only(top: 15, left: 5, right: 5),
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(50)),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(0, 3), // changes position of shadow
-                  ),
-                ]),
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
+              color: Colors.white,
+              boxShadow: boxShadowCard
+            ),
             child: Row(
               children: const [
                 Icon(Icons.search),
@@ -93,7 +88,7 @@ class CustomSearchDelegate extends SearchDelegate<Product> {
           itemBuilder: (context, index) {
             var product = state.products[index];
             return ListTile(
-              onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context) => ProductScreen(product: product))),
+              onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context) => ProductScreen(product: product, isAdmin: false,))),
               title: Text(product.name),
             );
           },
@@ -112,7 +107,7 @@ class CustomSearchDelegate extends SearchDelegate<Product> {
           itemBuilder: (context, index) {
             var product = state.products[index];
             return ListTile(
-              onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context) => ProductScreen(product: product))),
+              onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context) => ProductScreen(product: product, isAdmin: false,))),
               title: Text(product.name),
             );
           },

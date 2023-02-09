@@ -33,7 +33,7 @@ class ShopScreen extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, top: 15),
-                        child: Text('Ofertas',
+                        child: Text('Oferta del día',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 fontSize: 30,
@@ -42,7 +42,8 @@ class ShopScreen extends StatelessWidget {
                       ),
                     )
                   : Container(),
-              state.ad != null ? AdvertisementCard(ad: state.ad!) : Container(),
+              state.ad != null 
+              ? AdvertisementCard(ad: state.ad!) : Container(),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(

@@ -149,7 +149,6 @@ class NewAdScreen extends StatelessWidget {
                                   );
                                 }
                               );
-                              
                             }
                           },
                           child: const Text(

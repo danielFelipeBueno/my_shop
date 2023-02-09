@@ -14,12 +14,15 @@ class AdvertisementCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var boxDecoration = BoxDecoration(
-        border: Border.all(color: kSecondaryColor, width: 2),
-        borderRadius: const BorderRadius.all(Radius.circular(30)));
+      // border: Border.all(color: kSecondaryColor, width: 2),
+      borderRadius: const BorderRadius.all(Radius.circular(30)),
+      boxShadow: boxShadowCard,
+      color: const Color(0xffB576AD).withOpacity(0.6)
+    );
     return Container(
       height: 180,
       decoration: boxDecoration,
-      margin: const EdgeInsets.symmetric(vertical: 12),
+      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -54,19 +57,15 @@ class AdvertisementCard extends StatelessWidget {
             ),
           ),
           Container(
-            width: 160,
-            height: 160,
+            width: 150,
+            height: 150,
+            // ignore: prefer_const_constructors
             decoration: BoxDecoration(
               color: Colors.white,
-              border: Border.all(color: kSecondaryColor, width: 2),
-              borderRadius: const BorderRadius.all(Radius.circular(30))
+              borderRadius: const BorderRadius.all(Radius.circular(30)),
             ),
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: Image.network(ad.image,fit: BoxFit.contain)
-            // CircleAvatar(
-            //   backgroundImage: NetworkImage(ad.image),
-            //   radius: MediaQuery.of(context).size.width / 5
-            // )
           )
         ],
       ),

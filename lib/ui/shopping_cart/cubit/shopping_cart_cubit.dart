@@ -11,10 +11,13 @@ class ShoppingCartCubit extends Cubit<ShoppingCartState> {
     products.add(product);
     num total = state.total;
     total += product.price;
-    ShoppingCartState newState = state.copyWith(
-      products: products, 
-      total: total
-    );
+    ShoppingCartState newState =
+        state.copyWith(products: products, total: total);
+    emit(newState);
+  }
+
+  void emptyCart() {
+    ShoppingCartState newState = state.copyWith( products: [], total: 0);
     emit(newState);
   }
 
@@ -23,10 +26,8 @@ class ShoppingCartCubit extends Cubit<ShoppingCartState> {
     num total = state.total;
     total -= state.products[index].price;
     products.removeAt(index);
-    ShoppingCartState newState = state.copyWith(
-      products: products,
-      total: total
-    );
+    ShoppingCartState newState =
+        state.copyWith(products: products, total: total);
     emit(newState);
   }
 }

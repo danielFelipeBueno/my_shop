@@ -14,10 +14,11 @@ class ShoppingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-          border: Border.all(color: kSecondaryColor, width: 2),
+        color: Colors.white,
+        boxShadow: boxShadowCard,
           borderRadius: const BorderRadius.all(Radius.circular(30))),
       child: Row(
         children: [

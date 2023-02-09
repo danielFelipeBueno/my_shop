@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/domain/models/products_model.dart';
+import 'package:my_shop/ui/home/home_screen.dart';
 import 'package:my_shop/ui/shopping_cart/cubit/shopping_cart_cubit.dart';
 import 'package:my_shop/ui/shopping_cart/widgets/shopping_card.dart';
 import 'package:my_shop/utils/constants.dart';
@@ -42,9 +43,9 @@ class ShoppingCartScreen extends StatelessWidget {
           bottomSheet: Container(
               padding: const EdgeInsets.all(25),
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 5,
+              height: MediaQuery.of(context).size.height / 4.7,
               constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height / 5),
+                  maxHeight: MediaQuery.of(context).size.height / 4.7),
               color: Colors.white,
               child: Column(
                 children: [
@@ -52,16 +53,41 @@ class ShoppingCartScreen extends StatelessWidget {
                       style:
                           const TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
                   const Spacer(),
-                  MaterialButton(
+                  state.products.isNotEmpty ?TextButton(
+                    onPressed: () => context.read<ShoppingCartCubit>().emptyCart(), 
+                    child: const Text('Vaciar Carrito', style: TextStyle(color: kSecondaryColor),)
+                  ):Container(),
+                  state.products.isNotEmpty ?MaterialButton(
                     height: 40,
                     minWidth: double.infinity,
                     color: kPrimaryColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return CupertinoAlertDialog(
+                            title: const Text('Compra Realizada'),
+                            content: const Text('El repartidor se pondrá en contacto contigo'),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: const Text('Aceptar'),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const HomeScreen())
+                                  );
+                                },
+                              )
+                            ],
+                          );
+                        }
+                      );
+                    },
                     child: const Text(
-                      'Comprar',
+                      'Pagar',
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                  ),
+                  ): Container(),
                 ],
               )),
         );
