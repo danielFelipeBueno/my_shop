@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_shop/ui/admin/widgets/advertisement_card.dart';
 import 'package:my_shop/ui/home/cubit/home_cubit.dart';
+import 'package:my_shop/ui/search/search_module.dart';
 import 'package:my_shop/ui/shop/widgets/shop_product_card.dart';
 import 'package:my_shop/utils/constants.dart';
 
@@ -26,25 +27,22 @@ class ShopScreen extends StatelessWidget {
                   child: Text('encuentra todo lo que necesitas en Mi App'),
                 ),
               ),
-              const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextField(
-                    decoration: InputDecoration(hintText: 'Buscar'),
-                  )),
-              state.ad != null? const Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10, top: 15),
-                  child: Text('Ofertas',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: kSecondaryColor,
-                          fontWeight: FontWeight.bold)),
-                ),
-              ) : Container(),
-              state.ad != null?
-              AdvertisementCard(ad: state.ad!): Container(),
+              const SearchModule(),
+              state.ad != null
+                  ? const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10, top: 15),
+                        child: Text('Ofertas',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: kSecondaryColor,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    )
+                  : Container(),
+              state.ad != null ? AdvertisementCard(ad: state.ad!) : Container(),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -63,8 +61,8 @@ class ShopScreen extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 runAlignment: WrapAlignment.center,
                 children: [
-                  for(var i=0; state.products.length>i;i++)
-                    ShopProductCard(product:state.products[i]),
+                  for (var i = 0; state.products.length > i; i++)
+                    ShopProductCard(product: state.products[i]),
                 ],
               )
             ],
@@ -74,3 +72,4 @@ class ShopScreen extends StatelessWidget {
     );
   }
 }
+

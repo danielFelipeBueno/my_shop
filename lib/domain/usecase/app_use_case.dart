@@ -13,15 +13,13 @@ class AppUseCase {
 
   Future<User?> getUserById(String userId) async {
     final userResponse = await _appRepository.getUserById(userId);
-    // inspect(userResponse);
     if (userResponse.statusCode != 200) {}
-
     final user = jsonDecode(utf8.decode(userResponse.bodyBytes));
     return User.fromJson(user['data']);
   }
 
-  Future<List<Product>> getMainProducts(String userId) async {
-    final mainProductsResponse = await _appRepository.getMainProducts(userId);
+  Future<List<Product>> search(String query) async {
+    final mainProductsResponse = await _appRepository.search(query);
     if (mainProductsResponse.statusCode != 200) {}
     final mainProducts =
         jsonDecode(utf8.decode(mainProductsResponse.bodyBytes));
@@ -34,13 +32,23 @@ class AppUseCase {
     return products;
   }
 
+  Future<List<Product>> getMainProducts(String userId) async {
+    final mainProductsResponse = await _appRepository.getMainProducts(userId);
+    if (mainProductsResponse.statusCode != 200) {}
+    final mainProducts =
+        jsonDecode(utf8.decode(mainProductsResponse.bodyBytes));
+    if (mainProducts['data'].length == 0) return [];
+    final products = mainProducts['data']
+        .map<Product>((product) => Product.fromJson(product))
+        .toList();
+    return products;
+  }
+
   Future<List<Ad>> getMainAds(String userId) async {
     final mainAdsResponse = await _appRepository.getMainAds(userId);
     if (mainAdsResponse.statusCode != 200) {}
     final mainAds = jsonDecode(utf8.decode(mainAdsResponse.bodyBytes));
-    if (mainAds['data'].length == 0) {
-      return [];
-    }
+    if (mainAds['data'].length == 0) return [];
     final ads = mainAds['data'].map<Ad>((ad) => Ad.fromJson(ad)).toList();
     return ads;
   }
@@ -58,7 +66,6 @@ class AppUseCase {
 
   Future<bool> createProduct(Product product) async {
     final newProduct = await _appRepository.createProduct(product);
-    inspect(newProduct);
     if (newProduct.statusCode != 201) {
       return false;
     } else {
@@ -68,7 +75,6 @@ class AppUseCase {
 
   Future<bool> createAd(Ad ad) async {
     final newAd = await _appRepository.createAd(ad);
-    inspect(newAd);
     if (newAd.statusCode != 201) {
       return false;
     } else {

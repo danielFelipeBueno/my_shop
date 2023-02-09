@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Product {
   final String? id;
   final String name, description, brand, category, image, userId;
@@ -22,7 +24,8 @@ class Product {
         description: json["description"] ?? '',
         brand: json["branlisto panad"] ?? '',
         category: json["category"] ?? '',
-        image: json["image"] ?? 'https://images.materilejuguetes.com/imagenes/productos/5@img5cad51fd69d85.jpg',
+        image: json["image"] ??
+            'https://images.materilejuguetes.com/imagenes/productos/5@img5cad51fd69d85.jpg',
         userId: json["user_id"] ?? '',
         price: json["price"] ?? 0,
         status: json["status"] ?? false);
@@ -30,8 +33,8 @@ class Product {
 
   Map<String, dynamic> toJson() {
     return {
-      'name':name,
-      'description':description,
+      'name': name,
+      'description': description,
       'price': price,
       'brand': brand,
       'category': category,

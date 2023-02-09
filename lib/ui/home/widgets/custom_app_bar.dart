@@ -33,7 +33,7 @@ class CustomAppBar extends StatelessWidget {
                             context,
                             Container(
                               width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.33,
+                              height: MediaQuery.of(context).size.height * 0.35,
                               color: Colors.white,
                               child: SafeArea(
                                 child: Padding(

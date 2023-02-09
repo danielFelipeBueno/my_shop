@@ -5,6 +5,7 @@ import 'package:my_shop/ui/home/cubit/home_cubit.dart';
 import 'package:my_shop/ui/home/home_screen.dart';
 import 'package:my_shop/ui/new_ad/cubit/new_ad_cubit.dart';
 import 'package:my_shop/ui/new_product/cubit/new_product_cubit.dart';
+import 'package:my_shop/ui/search/cubit/search_cubit.dart';
 import 'package:my_shop/ui/shopping_cart/cubit/shopping_cart_cubit.dart';
 import 'package:my_shop/utils/dependencies.dart';
 
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => AdminCubit(context.read())),
           BlocProvider(create: (context) => NewProductCubit(context.read())),
           BlocProvider(create: (context) => ShoppingCartCubit()),
-          BlocProvider(create: (context) => NewAdCubit(context.read()))
+          BlocProvider(create: (context) => NewAdCubit(context.read())),
+          BlocProvider(create: (context) => SearchCubit(context.read()))
         ],
         child: MaterialApp(
           builder: (context, child) {

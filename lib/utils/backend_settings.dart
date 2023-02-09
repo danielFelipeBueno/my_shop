@@ -11,3 +11,4 @@ String getMainAdsUrl = '$baseUrl/advertisements/id/';
 String getMainHomeUrl = '$baseUrl/products/home';
 String createProductUrl = '$baseUrl/products/create';
 String createAdUrl = '$baseUrl/advertisements/create';
+String searchUrl = '$baseUrl/products/search_products/';

@@ -36,15 +36,21 @@ class AppImpl extends AppRepository {
   Future<http.Response> createProduct(Product product) async {
     final url = Uri.parse(createProductUrl);
     final body = jsonEncode(product.toJson());
-    final headers = {'Content-Type':'application/json'};
-    return await http.post(url, headers: headers,body: body);
+    final headers = {'Content-Type': 'application/json'};
+    return await http.post(url, headers: headers, body: body);
   }
 
   @override
   Future<http.Response> createAd(Ad ad) async {
     final url = Uri.parse(createAdUrl);
     final body = jsonEncode(ad.toJson());
-    final headers = {'Content-Type':'application/json'};
-    return await http.post(url, headers: headers,body: body);
+    final headers = {'Content-Type': 'application/json'};
+    return await http.post(url, headers: headers, body: body);
+  }
+
+  @override
+  Future<http.Response> search(String query) async {
+    final url = Uri.parse(searchUrl+query);
+    return await http.get(url);
   }
 }

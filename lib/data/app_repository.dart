@@ -9,4 +9,5 @@ abstract class AppRepository {
   Future<Response> getHome();
   Future<Response> createProduct(Product product);
   Future<Response> createAd(Ad ad);
+  Future<Response> search(String query);
 }

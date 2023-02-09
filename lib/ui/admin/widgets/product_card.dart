@@ -34,16 +34,20 @@ class ProductCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        product.name,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width*0.4,
+                        child: Text(
+                          product.name,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
                       ),
                       CircleAvatar(
                         radius: 17,
                         backgroundColor: product.status
-                            ? Color(0xff4CCB20)
-                            : Color(0xffFF0000),
+                            ? const Color(0xff4CCB20)
+                            : const Color(0xffFF0000),
                         child: Icon(
                             product.status
                                 ? Icons.check_circle_outline_outlined
