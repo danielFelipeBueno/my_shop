@@ -9,7 +9,7 @@ import 'package:my_shop/utils/constants.dart';
 class NewAdScreen extends StatelessWidget {
   const NewAdScreen({super.key});
 
-  final String title = "Crear Anuncio XD";
+  final String title = "Crear Anuncio";
 
   @override
   Widget build(BuildContext context) {

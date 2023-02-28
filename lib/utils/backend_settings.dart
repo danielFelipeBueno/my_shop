@@ -2,7 +2,8 @@ import 'dart:io';
 
 const emulateAndroid = 'http://10.0.2.2:3000/api';
 const emulateiOS = 'http://localhost:3000/api';
-String baseUrl = Platform.isAndroid ?emulateAndroid:emulateiOS;
+// String baseUrl = Platform.isAndroid ?emulateAndroid:emulateiOS;
+String baseUrl = 'https://apishop.fly.dev/api';
 
 
 String getUserByIdUrl = '$baseUrl/users/id/';
