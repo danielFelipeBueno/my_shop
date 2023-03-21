@@ -23,11 +23,11 @@ class ShoppingCard extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            radius: MediaQuery.of(context).size.width / 12,
+            radius: MediaQuery.of(context).size.width / 13,
             backgroundImage: NetworkImage(product.image),
           ),
           Container(
-            width: MediaQuery.of(context).size.width * 0.45,
+            width: MediaQuery.of(context).size.width * 0.43,
             padding: const EdgeInsets.only(left: 20, right: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

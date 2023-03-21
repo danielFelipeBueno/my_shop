@@ -43,15 +43,15 @@ class ShoppingCartScreen extends StatelessWidget {
           bottomSheet: Container(
               padding: const EdgeInsets.all(25),
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 4.7,
+              height: MediaQuery.of(context).size.height / 4.4,
               constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height / 4.7),
+                  maxHeight: MediaQuery.of(context).size.height / 4.4),
               color: Colors.white,
               child: Column(
                 children: [
                   Text('Total: \$${state.total.toInt()}',
-                      style:
-                          const TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
+                    style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold)
+                  ),
                   const Spacer(),
                   state.products.isNotEmpty ?TextButton(
                     onPressed: () => context.read<ShoppingCartCubit>().emptyCart(), 
