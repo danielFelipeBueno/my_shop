@@ -10,9 +10,8 @@ const textTitleActiveStyle = TextStyle(
 const textTitleInactiveStyle = TextStyle(
     fontSize: 22, fontWeight: FontWeight.w400, color: kSecondaryColor);
 
-const String userId = '63dd89da7972360280f38d86';
-const String defaultProfile =
-    'https://qph.cf2.quoracdn.net/main-qimg-2b21b9dd05c757fe30231fac65b504dd';
+const String userId = '6417dcba07fbfaccdcb2af84';
+const String defaultProfile = 'https://qph.cf2.quoracdn.net/main-qimg-2b21b9dd05c757fe30231fac65b504dd';
 
 List<BoxShadow> boxShadowCard = [
   BoxShadow(
